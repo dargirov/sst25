@@ -56,10 +56,6 @@ void SST_Init(void)
 }
 
 
-
-
-
-
 /*************************************************
  * Brief: Reads _len_ bytes from address _addr_ and
  *	writes to _*buf_. The read instruction supports up to
@@ -83,10 +79,6 @@ void SST_Read(unsigned char *buf, long addr, int len)
 		*buf++ = SPI_Send_Cont_Byte(0);
 	CS_HIGH
 }
-
-
-
-
 
 
 /*************************************************
@@ -114,10 +106,6 @@ void SST_High_Speed_Read(unsigned char *buf, long addr, int len)
 }
 
 
-
-
-
-
 /*************************************************
  * Brief: Allows reading of the Status register.
  *
@@ -135,10 +123,6 @@ unsigned char SST_Read_Status_Register(void)
 	CS_HIGH
 	return res;
 }
-
-
-
-
 
 
 /*************************************************
@@ -163,10 +147,6 @@ void SST_Read_ID(unsigned char *buf)
 }
 
 
-
-
-
-
 /*************************************************
  * Brief: Sets the Write-Enable-Latch bit in the Status register
  * to '1' allowing Write operations to occur.
@@ -179,10 +159,6 @@ void SST_Write_Enable(void)
 {
 	SPI_Send_Byte(COM_WRITE_ENABLE);
 }
-
-
-
-
 
 
 /*************************************************
@@ -199,10 +175,6 @@ void SST_Write_Disable(void)
 }
 
 
-
-
-
-
 /*************************************************
  * Brief: Opens the status register for alteration.
  * The Write-Status-Register instruction must be executed
@@ -217,10 +189,6 @@ void SST_Enable_Write_Status_Register(void)
 {
 	SPI_Send_Byte(COM_ENABLE_WRITE_STATUS_REG);
 }
-
-
-
-
 
 
 /*************************************************
@@ -248,10 +216,6 @@ void SST_Byte_Program(unsigned char b, long addr)
 }
 
 
-
-
-
-
 /*************************************************
  * Brief: Resets BP2, BP1 and BP0.
  *
@@ -273,10 +237,6 @@ void SST_Clear_Write_Protection(void)
 }
 
 
-
-
-
-
 /*************************************************
  * Brief: Clears all bits in the device to 0xff.
  *
@@ -292,10 +252,6 @@ void SST_Chip_Erase(void)
 	while((SST_Read_Status_Register() & 0x01) == 1);
 	SST_Write_Disable();
 }
-
-
-
-
 
 
 /*************************************************
@@ -321,10 +277,6 @@ void SST_Sector_Erase(long addr)
 }
 
 
-
-
-
-
 /*************************************************
  * Brief: Clears all bits in the selected 32 KByte block to 0xff.
  *
@@ -346,10 +298,6 @@ void SST_32KB_Block_Erase(long addr)
 	while((SST_Read_Status_Register() & 0x01) == 1);
 	SST_Write_Disable();
 }
-
-
-
-
 
 
 /*************************************************
@@ -375,10 +323,6 @@ void SST_64KB_Block_Erase(long addr)
 }
 
 
-
-
-
-
 /*************************************************
  * Brief: Writes new values to the BP3, BP2, BP1, BP0,
  * and BPL bits of the status register.
@@ -396,10 +340,6 @@ void SST_Write_Status_Register(unsigned char val)
 	SPI_Send_Cont_Byte(val);
 	CS_HIGH
 }
-
-
-
-
 
 
 /*************************************************
@@ -420,10 +360,6 @@ void SST_Read_Jedec_ID(unsigned char *buf)
 	*buf = SPI_Send_Cont_Byte(0);
 	CS_HIGH
 }
-
-
-
-
 
 
 /*************************************************
