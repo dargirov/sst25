@@ -17,6 +17,7 @@ static void SPI_Init(void)
 	SSPCON1bits.SSPEN = 1;
 }
 
+
 static unsigned char SPI_Send_Byte(unsigned char data)
 {
 	unsigned char res;
@@ -28,6 +29,7 @@ static unsigned char SPI_Send_Byte(unsigned char data)
 	return res;
 }
 
+
 static unsigned char SPI_Send_Cont_Byte(unsigned char data)
 {
 	unsigned char res;
@@ -36,8 +38,6 @@ static unsigned char SPI_Send_Cont_Byte(unsigned char data)
 	res = SSPBUF;
 	return res;
 }
-
-
 
 
 /*************************************************
